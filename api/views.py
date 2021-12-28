@@ -8,7 +8,7 @@ import requests
 import secrets
 import threading
 import math
-from dateutil.relativedelta import *
+# from dateutil.relativedelta import *
 import string
 import random
 import ast
