@@ -5,7 +5,7 @@ from django.db.models.fields import CharField
 from django.db.models.fields.files import ImageField
 from django.http import request
 import datetime
-from dateutil.relativedelta import *
+# from dateutil.relativedelta import *
 # Create your models here.
 
 class UserManager(BaseUserManager):
