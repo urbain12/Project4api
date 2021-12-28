@@ -26,6 +26,8 @@ urlpatterns = [
     path('delete_user/<int:userID>',delete_user,name="delete_user"),
     path('ApproveLoan/<int:approveID>',ApproveLoan,name="ApproveLoan"),
     path('RequestLoan/',RequestLoanCreateView.as_view()),
+    path('register/',register.as_view()),
+
 
 
 

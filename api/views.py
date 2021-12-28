@@ -304,4 +304,48 @@ class RequestLoanCreateView(CreateAPIView):
     serializer_class = requestLoanSerializer
 
 
+class register(CreateAPIView):
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
+
+    def create(self, request):
+        print(request.data)
+        try:
+            user1 = User.objects.get(email=request.data['email'])
+            response = {
+                'status': 'Failure',
+                'code': status.HTTP_400_BAD_REQUEST,
+                'message': 'A user with that email already exists!',
+                'data': []
+            }
+
+            return Response(response)
+        except User.DoesNotExist:
+            try:
+                user2 = User.objects.get(phone=request.data['phone'])
+                response = {
+                    'status': 'Failure',
+                    'code': status.HTTP_400_BAD_REQUEST,
+                    'message': 'A user with that phone number already exists!',
+                    'data': []
+                }
+
+                return Response(response)
+            except User.DoesNotExist:
+                user = User.objects.create_user(
+                    FirstName=request.data['FirstName'],
+                    LastName=request.data['LastName'],
+                    email=request.data['email'],
+                    phone=request.data['phone'],
+                    password=request.data['password']
+                    )               
+                response = {
+                    'status': 'success',
+                    'code': status.HTTP_200_OK,
+                    'message': 'Customer created successfully!!!',
+                    'data': []
+                }
+
+                return Response(response)
+
+
 
