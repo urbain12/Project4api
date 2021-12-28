@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api',
     'django_crontab',
-    'mathfilters',
     'django.contrib.sites',
     'django.contrib.humanize',
     'allauth',
